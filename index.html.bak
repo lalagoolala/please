@@ -663,7 +663,7 @@
             // Google 로그인 버튼 초기화
             setTimeout(() => {
                 google.accounts.id.initialize({
-                    client_id: 'YOUR_GOOGLE_CLIENT_ID.apps.googleusercontent.com',
+                    client_id: '878008184488-12sdton6pakapcrembj418rea9h2v4t0.apps.googleusercontent.com',
                     callback: handleGoogleLogin,
                     error_callback: handleGoogleError
                 });
