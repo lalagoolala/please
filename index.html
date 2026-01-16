@@ -1,13 +1,11 @@
 <!DOCTYPE html>
 <html lang="ko">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>5학년 보건수업</title>
     <link href="https://fonts.googleapis.com/css2?family=Jua:wght@400&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
     <script src="https://accounts.google.com/gsi/client" async defer></script>
     <style>
         * {
@@ -26,7 +24,7 @@
         .navbar {
             background: linear-gradient(90deg, #ff6b6b 0%, #ff8c42 50%, #ffd93d 100%);
             padding: 1rem 2rem;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -37,7 +35,7 @@
             font-size: 1.8rem;
             font-weight: bold;
             color: white;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
         }
 
         .nav-links {
@@ -47,8 +45,7 @@
             flex-wrap: wrap;
         }
 
-        .nav-links a,
-        .nav-links button {
+        .nav-links a, .nav-links button {
             color: white;
             text-decoration: none;
             font-weight: 600;
@@ -61,8 +58,7 @@
             font-size: 0.95rem;
         }
 
-        .nav-links a:hover,
-        .nav-links button:hover {
+        .nav-links a:hover, .nav-links button:hover {
             background-color: rgba(255, 255, 255, 0.2);
             transform: translateY(-2px);
         }
@@ -73,7 +69,7 @@
             padding: 40px;
             margin: 30px auto;
             max-width: 1000px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
         }
 
         h1 {
@@ -120,7 +116,7 @@
             border-radius: 15px;
             padding: 30px;
             background: white;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
             border-left: 5px solid #ff6b6b;
             transition: all 0.3s;
             cursor: pointer;
@@ -129,7 +125,7 @@
 
         .card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
         }
 
         .card.qna {
@@ -223,7 +219,7 @@
             top: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
+            background-color: rgba(0,0,0,0.5);
         }
 
         .modal-content {
@@ -234,7 +230,7 @@
             border-radius: 20px;
             width: 90%;
             max-width: 500px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
             max-height: 90vh;
             overflow-y: auto;
         }
@@ -262,9 +258,7 @@
             font-weight: bold;
         }
 
-        input,
-        textarea,
-        select {
+        input, textarea, select {
             width: 100%;
             padding: 10px;
             border: 2px solid #ff6b6b;
@@ -273,9 +267,7 @@
             font-size: 1rem;
         }
 
-        input:focus,
-        textarea:focus,
-        select:focus {
+        input:focus, textarea:focus, select:focus {
             outline: none;
             border-color: #667eea;
             box-shadow: 0 0 5px rgba(102, 126, 234, 0.3);
@@ -441,15 +433,41 @@
             cursor: pointer;
         }
 
+        .google-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            padding: 10px;
+            background: white;
+            border: 1px solid #dadce0;
+            border-radius: 4px;
+            color: #3c4043;
+            cursor: pointer;
+            font-family: 'Roboto', arial, sans-serif;
+            font-size: 14px;
+            font-weight: 500;
+            transition: background-color .218s, border-color .218s, box-shadow .218s;
+        }
+
+        .google-btn:hover {
+            background-color: #f8f9fa;
+            border-color: #d3d3d3;
+        }
+
+        .google-btn svg {
+            width: 18px;
+            height: 18px;
+            margin-right: 10px;
+        }
+
         @media (max-width: 768px) {
             .card-grid {
                 grid-template-columns: 1fr;
             }
-
             h1 {
                 font-size: 2rem;
             }
-
             .navbar {
                 flex-direction: column;
                 gap: 1rem;
@@ -457,7 +475,6 @@
         }
     </style>
 </head>
-
 <body>
     <nav class="navbar">
         <div class="navbar-brand">🏥 5학년 보건교실</div>
@@ -467,8 +484,7 @@
             <li><a href="#" onclick="showQNA()">❓ 질의응답</a></li>
             <li id="userMenu" class="hidden">
                 <span id="userName"></span>
-                <button onclick="openDeleteAccountModal()" style="background: rgba(255,255,255,0.3); margin-left: 10px;">🗑️ 회원탈퇴</button>
-                <button onclick="logout()" style="background: rgba(255,255,255,0.3); margin-left: 5px;">🚪 로그아웃</button>
+                <button onclick="logout()" style="background: rgba(255,255,255,0.3);">로그아웃</button>
             </li>
             <li id="authMenu">
                 <button onclick="openLoginModal()">🔐 로그인</button>
@@ -483,7 +499,7 @@
             <h1>환영합니다! 👋</h1>
             <p class="lead">우리들의 건강을 지키는 5학년 보건수업 홈페이지입니다.</p>
             <hr style="border: 2px solid #ff6b6b; margin: 20px 0;">
-
+            
             <div id="welcomeMsg" class="alert alert-info">
                 🎉 로그인하고 보건수업에 참여하세요!
             </div>
@@ -512,16 +528,14 @@
                 </div>
 
                 <div class="card" style="border-left-color: #ffa502;">
-                    <button class="edit-btn" id="editNutritionBtn"
-                        onclick="openEditHealthModal(event, 'nutrition')">수정</button>
+                    <button class="edit-btn" id="editNutritionBtn" onclick="openEditHealthModal(event, 'nutrition')">수정</button>
                     <div style="font-size: 2.5rem; margin-bottom: 10px;">🥗</div>
                     <h5 class="card-title" style="color: #ffa502;">영양 관리</h5>
                     <p class="card-text" id="nutritionContent">균형 잡힌 식단은 건강한 성장의 기본입니다!</p>
                 </div>
 
                 <div class="card" style="border-left-color: #3498db;">
-                    <button class="edit-btn" id="editExerciseBtn"
-                        onclick="openEditHealthModal(event, 'exercise')">수정</button>
+                    <button class="edit-btn" id="editExerciseBtn" onclick="openEditHealthModal(event, 'exercise')">수정</button>
                     <div style="font-size: 2.5rem; margin-bottom: 10px;">🏃</div>
                     <h5 class="card-title" style="color: #3498db;">운동과 휴식</h5>
                     <p class="card-text" id="exerciseContent">적절한 운동과 휴식은 건강한 생활의 필수요소입니다!</p>
@@ -539,15 +553,11 @@
                 </ul>
             </div>
 
-            <div id="startSection" class="card"
-                style="border-left-color: #ff8c42; background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%); color: white; margin-top: 30px;">
+            <div id="startSection" class="card" style="border-left-color: #ff8c42; background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%); color: white; margin-top: 30px;">
                 <h3 style="color: #ff8c42; margin-bottom: 15px;">🚀 지금 바로 시작해보세요!</h3>
                 <p style="color: #555; margin-bottom: 20px; font-size: 1.1rem;">로그인하고 보건수업에 더 적극적으로 참여해보세요!</p>
-                <button class="btn"
-                    style="background: linear-gradient(90deg, #ff8c42, #ffd93d); color: white; margin-right: 10px;"
-                    onclick="openSignupModal()">📝 회원가입</button>
-                <button class="btn" style="background: white; color: #ff8c42; border: 2px solid #ff8c42;"
-                    onclick="openLoginModal()">🔐 로그인</button>
+                <button class="btn" style="background: linear-gradient(90deg, #ff8c42, #ffd93d); color: white; margin-right: 10px;" onclick="openSignupModal()">📝 회원가입</button>
+                <button class="btn" style="background: white; color: #ff8c42; border: 2px solid #ff8c42;" onclick="openLoginModal()">🔐 로그인</button>
             </div>
         </div>
     </div>
@@ -561,8 +571,7 @@
     <!-- 질의응답 페이지 -->
     <div id="qnaPage" class="hidden container">
         <h1>❓ 질의응답</h1>
-        <button id="qnaPostBtn" class="btn btn-primary" onclick="openPostModal('qna')"
-            style="display: none; margin-bottom: 20px;">✏️ 질문 작성</button>
+        <button id="qnaPostBtn" class="btn btn-primary" onclick="openPostModal('qna')" style="display: none; margin-bottom: 20px;">✏️ 질문 작성</button>
         <div id="qnaList"></div>
     </div>
 
@@ -571,20 +580,18 @@
         <h1>⚙️ 관리자 패널</h1>
         <div class="tabs">
             <button class="tab-btn active" onclick="switchAdminTab('approval')">회원가입 승인</button>
-                <button class="tab-btn" onclick="switchAdminTab('users')">회원 관리</button>
-                <button class="tab-btn" onclick="switchAdminTab('content')">콘텐츠 편집</button>
-            </div>
+            <button class="tab-btn" onclick="switchAdminTab('content')">콘텐츠 편집</button>
+        </div>
 
-            <!-- 회원가입 승인 탭 -->
-            <div id="approvalTab">
-                <h2 style="color: #ff6b6b; margin-bottom: 20px;">대기 중인 회원가입</h2>
-                <div id="pendingList" class="approval-list"></div>
-            </div>
+        <!-- 회원가입 승인 탭 -->
+        <div id="approvalTab">
+            <h2 style="color: #ff6b6b; margin-bottom: 20px;">대기 중인 회원가입</h2>
+            <div id="pendingList" class="approval-list"></div>
+        </div>
 
-            <!-- 회원 관리 탭 -->
-            <div id="usersTab" style="display: none;">
-                <h2 style="color: #ff6b6b; margin-bottom: 20px;">가입 회원 목록</h2>
-                <div id="usersList" class="approval-list"></div>
+        <!-- 콘텐츠 편집 탭 -->
+        <div id="contentTab" style="display: none;">
+            <h2 style="color: #ff6b6b; margin-bottom: 20px;">콘텐츠 관리</h2>
             <p style="color: #666; margin-bottom: 20px;">홈페이지의 주요 콘텐츠를 수정할 수 있습니다.</p>
         </div>
     </div>
@@ -594,6 +601,8 @@
         <div class="modal-content">
             <span class="close" onclick="closeLoginModal()">&times;</span>
             <h2>🔐 로그인</h2>
+            
+            <!-- 일반 로그인 폼 -->
             <form onsubmit="handleLogin(event)">
                 <div class="form-group">
                     <label>📧 이메일 또는 아이디</label>
@@ -605,12 +614,15 @@
                 </div>
                 <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 20px;">로그인</button>
             </form>
+            
             <div style="margin: 20px 0; text-align: center; position: relative;">
                 <hr style="border: 0; border-top: 1px solid #eee;">
-                <span
-                    style="position: absolute; top: -10px; left: 50%; transform: translateX(-50%); background: white; padding: 0 10px; color: #999; font-size: 0.8rem;">또는</span>
+                <span style="position: absolute; top: -10px; left: 50%; transform: translateX(-50%); background: white; padding: 0 10px; color: #999; font-size: 0.8rem;">또는</span>
             </div>
-            <div id="googleLoginBtn" style="display: flex; justify-content: center;"></div>
+            
+            <!-- Google 로그인 버튼 -->
+            <div id="googleLoginBtn"></div>
+            
             <hr style="margin: 20px 0;">
             <p style="text-align: center; color: #666;">계정이 없으신가요? <button
                     onclick="closeLoginModal(); openSignupModal();"
@@ -624,7 +636,9 @@
         <div class="modal-content">
             <span class="close" onclick="closeSignupModal()">&times;</span>
             <h2>📝 회원가입</h2>
-            <form onsubmit="handleSignup(event)">
+            
+            <!-- 일반 회원가입 폼 -->
+            <form id="signupForm" onsubmit="handleSignup(event)">
                 <div class="form-group">
                     <label>👤 이름</label>
                     <input type="text" id="signupName" required>
@@ -636,12 +650,9 @@
                 <div class="form-group">
                     <label>👥 계정 유형</label>
                     <div class="radio-group">
-                        <label><input type="radio" name="accountType" value="student" required
-                                onchange="updateStudentField()"> 🎓 학생</label>
-                        <label><input type="radio" name="accountType" value="parent" required
-                                onchange="updateStudentField()"> 👨‍👩‍👧 학부모</label>
-                        <label><input type="radio" name="accountType" value="admin" required
-                                onchange="updateStudentField()"> 👑 관리자</label>
+                        <label><input type="radio" name="accountType" value="student" required onchange="updateStudentField()"> 🎓 학생</label>
+                        <label><input type="radio" name="accountType" value="parent" required onchange="updateStudentField()"> 👨‍👩‍👧 학부모</label>
+                        <label><input type="radio" name="accountType" value="admin" required onchange="updateStudentField()"> 👑 관리자</label>
                     </div>
                 </div>
                 <div class="form-group" id="studentField" style="display: none;">
@@ -654,32 +665,52 @@
                 </div>
                 <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 20px;">가입신청</button>
             </form>
+            
             <div style="margin: 20px 0; text-align: center; position: relative;">
                 <hr style="border: 0; border-top: 1px solid #eee;">
-                <span
-                    style="position: absolute; top: -10px; left: 50%; transform: translateX(-50%); background: white; padding: 0 10px; color: #999; font-size: 0.8rem;">또는</span>
+                <span style="position: absolute; top: -10px; left: 50%; transform: translateX(-50%); background: white; padding: 0 10px; color: #999; font-size: 0.8rem;">또는</span>
             </div>
-            <div id="googleSignupBtn" style="display: flex; justify-content: center;">
-                <button onclick="handleGoogleSignupClick()" type="button"
-                    style="display: flex; align-items: center; justify-content: center; width: 100%; padding: 10px; background: white; border: 1px solid #dadce0; border-radius: 4px; color: #3c4043; cursor: pointer; font-family: 'Roboto', arial, sans-serif; font-size: 14px; font-weight: 500; transition: background-color .218s, border-color .218s, box-shadow .218s;">
-                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="18px" height="18px"
-                        viewBox="-3 0 26 24" style="margin-right: 10px;">
-                        <path fill="#4285F4"
-                            d="M19 12.2c0-.6-.1-1.2-.2-1.8H10v3.4h5.1c-.2 1.2-.9 2.1-2 2.8v2.3h3.2c1.9-1.8 3-4.3 3-6.7z">
-                        </path>
-                        <path fill="#34A853"
-                            d="M10 20c2.7 0 5-1 6.7-2.6l-3.2-2.3c-.9.6-2.1 1-3.5 1-2.6 0-4.8-1.8-5.6-4.2H1.2v2.5C2.9 17.8 6.2 20 10 20z">
-                        </path>
-                        <path fill="#FBBC05"
-                            d="M4.4 11.9c-.2-.6-.2-1.3 0-2V7.4H1.2C.4 8.9 0 10.4 0 12s.4 3.1 1.2 4.6l3.2-2.5c-.2-.6-.2-1.2 0-2.2z">
-                        </path>
-                        <path fill="#EA4335"
-                            d="M10 4.4c1.5 0 2.8.5 3.9 1.5l2.9-2.9C15 1.7 12.7 0 10 0 6.2 0 2.9 2.2 1.2 5.5l3.2 2.5c.8-2.4 3-4.1 5.6-4.1z">
-                        </path>
-                    </svg>
-                    Google 계정으로 회원가입
-                </button>
-            </div>
+            
+            <!-- Google 회원가입 버튼 -->
+            <button type="button" class="google-btn" onclick="triggerGoogleSignup()">
+                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="-3 0 26 24">
+                    <path fill="#4285F4" d="M19 12.2c0-.6-.1-1.2-.2-1.8H10v3.4h5.1c-.2 1.2-.9 2.1-2 2.8v2.3h3.2c1.9-1.8 3-4.3 3-6.7z"></path>
+                    <path fill="#34A853" d="M10 20c2.7 0 5-1 6.7-2.6l-3.2-2.3c-.9.6-2.1 1-3.5 1-2.6 0-4.8-1.8-5.6-4.2H1.2v2.5C2.9 17.8 6.2 20 10 20z"></path>
+                    <path fill="#FBBC05" d="M4.4 11.9c-.2-.6-.2-1.3 0-2V7.4H1.2C.4 8.9 0 10.4 0 12s.4 3.1 1.2 4.6l3.2-2.5c-.2-.6-.2-1.2 0-2.2z"></path>
+                    <path fill="#EA4335" d="M10 4.4c1.5 0 2.8.5 3.9 1.5l2.9-2.9C15 1.7 12.7 0 10 0 6.2 0 2.9 2.2 1.2 5.5l3.2 2.5c.8-2.4 3-4.1 5.6-4.1z"></path>
+                </svg>
+                Google 계정으로 회원가입
+            </button>
+            
+            <hr style="margin: 20px 0;">
+            <p style="text-align: center; color: #666;">이미 계정이 있으신가요? <button
+                    onclick="closeSignupModal(); openLoginModal();"
+                    style="background: none; border: none; color: #ff6b6b; font-weight: bold; cursor: pointer;">로그인하기</button>
+            </p>
+        </div>
+    </div>
+
+    <!-- Google 계정 유형 선택 모달 -->
+    <div id="googleTypeModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeGoogleTypeModal()">&times;</span>
+            <h2>👥 계정 유형 선택</h2>
+            <p style="color: #666; margin-bottom: 20px;">Google 계정으로 어떤 계정으로 가입하시겠습니까?</p>
+            <form onsubmit="completeGoogleSignup(event)">
+                <div class="form-group">
+                    <label>👥 계정 유형</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="googleAccountType" value="student" required onchange="updateGoogleStudentField()"> 🎓 학생</label>
+                        <label><input type="radio" name="googleAccountType" value="parent" required onchange="updateGoogleStudentField()"> 👨‍👩‍👧 학부모</label>
+                        <label><input type="radio" name="googleAccountType" value="admin" required onchange="updateGoogleStudentField()"> 👑 관리자</label>
+                    </div>
+                </div>
+                <div class="form-group" id="googleStudentField" style="display: none;">
+                    <label>📚 학년 반 번호</label>
+                    <input type="text" id="googleStudent" placeholder="예: 5학년 1반 10번">
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 20px;">가입 완료</button>
+            </form>
         </div>
     </div>
 
@@ -751,36 +782,38 @@
         </div>
     </div>
 
-    <!-- 구글 가입 유형 선택 모달 -->
-    <div id="googleTypeModal" class="modal">
-        <div class="modal-content">
-            <h2>👥 계정 유형 선택</h2>
-            <p style="margin-bottom: 20px; color: #666;">Google 계정으로 처음 가입하셨습니다. 사용하실 계정 유형을 선택해주세요.</p>
-            <div class="radio-group">
-                <label><input type="radio" name="googleAccountType" value="student" checked> 🎓 학생</label>
-                <label><input type="radio" name="googleAccountType" value="parent"> 👨‍👩‍👧 학부모</label>
-                <label><input type="radio" name="googleAccountType" value="admin"> 👑 관리자</label>
-            </div>
-            <button onclick="submitGoogleSignup()" class="btn btn-primary" style="width: 100%; margin-top: 20px;">가입
-                완료</button>
-        </div>
-    </div>
-
-    <!-- 회원탈퇴 확인 모달 -->
-    <div id="deleteAccountModal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeDeleteAccountModal()">&times;</span>
-            <h2 style="color: #e74c3c;">🗑️ 회원탈퇴</h2>
-            <p style="margin: 20px 0; color: #666; font-size: 1.1rem;">정말로 회원탈퇴 하시겠습니까?</p>
-            <p style="margin: 15px 0; color: #999; font-size: 0.95rem;">⚠️ 회원탈퇴 후에는 계정을 복구할 수 없습니다.</p>
-            <div style="display: flex; gap: 10px; margin-top: 30px;">
-                <button onclick="confirmDeleteAccount()" class="btn" style="background: #e74c3c; color: white; flex: 1;">확인 - 회원탈퇴</button>
-                <button onclick="closeDeleteAccountModal()" class="btn" style="background: #95a5a6; color: white; flex: 1;">취소</button>
-            </div>
-        </div>
-    </div>
-
     <script>
+        // ========== Google OAuth 2.0 설정 ==========
+        // 자신의 Google Client ID를 여기에 입력하세요
+        // https://console.cloud.google.com 에서 생성
+        const GOOGLE_CLIENT_ID = '878008184488-12sdton6pakapcrembj418rea9h2v4t0.apps.googleusercontent.com';
+        
+        let tempGoogleData = null;
+        let isGoogleLogin = false;
+
+        // Google OAuth 초기화
+        window.addEventListener('load', function() {
+            try {
+                google.accounts.id.initialize({
+                    client_id: 878008184488-12sdton6pakapcrembj418rea9h2v4t0.apps.googleusercontent.com,
+                    callback: handleGoogleResponse
+                });
+
+                // 로그인 모달의 Google 버튼 렌더링
+                google.accounts.id.renderButton(
+                    document.getElementById('googleLoginBtn'),
+                    { 
+                        theme: 'outline', 
+                        size: 'large', 
+                        width: '100%',
+                        text: 'signin_with'
+                    }
+                );
+            } catch (error) {
+                console.log('Google OAuth 아직 설정 안됨 (정상)');
+            }
+        });
+
         // ========== 데이터 초기화 ==========
         const initStorage = () => {
             // 관리자 계정 미리 생성
@@ -832,6 +865,65 @@
         let currentPostId = null;
         let currentHealthType = null;
 
+        // ========== Google OAuth 응답 처리 ==========
+        function handleGoogleResponse(response) {
+            try {
+                // JWT 토큰 디코딩
+                const base64Url = response.credential.split('.')[1];
+                const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+                const jsonPayload = decodeURIComponent(atob(base64).split('').map(function(c) {
+                    return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+                }).join(''));
+
+                const payload = JSON.parse(jsonPayload);
+                const email = payload.email;
+                const name = payload.name;
+                const users = JSON.parse(localStorage.getItem('users'));
+
+                // 기존 사용자 확인
+                let user = users.find(u => u.email === email);
+
+                if (isGoogleLogin) {
+                    // Google 로그인
+                    if (user && user.status === 'approved') {
+                        currentUser = user;
+                        localStorage.setItem('currentUser', JSON.stringify(user));
+                        closeLoginModal();
+                        updateUI();
+                        alert('Google 계정으로 로그인되었습니다!');
+                    } else if (user && user.status === 'pending') {
+                        alert('❌ 회원가입이 관리자 승인 대기 중입니다.');
+                    } else {
+                        alert('❌ 등록되지 않은 Google 계정입니다. 회원가입을 먼저 해주세요.');
+                    }
+                } else {
+                    // Google 회원가입
+                    if (user) {
+                        alert('❌ 이미 가입된 이메일입니다.');
+                        return;
+                    }
+                    
+                    tempGoogleData = { name, email };
+                    closeSignupModal();
+                    document.getElementById('googleTypeModal').style.display = 'block';
+                }
+                isGoogleLogin = false;
+            } catch (error) {
+                console.error('Google OAuth error:', error);
+                alert('Google 인증 처리 중 오류가 발생했습니다.');
+            }
+        }
+
+        function triggerGoogleSignup() {
+            isGoogleLogin = false;
+            google.accounts.id.prompt();
+        }
+
+        function handleGoogleLoginClick() {
+            isGoogleLogin = true;
+            google.accounts.id.prompt();
+        }
+
         // ========== UI 업데이트 ==========
         const updateUI = () => {
             const userMenu = document.getElementById('userMenu');
@@ -845,18 +937,18 @@
             if (currentUser) {
                 userMenu.classList.remove('hidden');
                 authMenu.classList.add('hidden');
-
+                
                 const typeBadge = {
                     'admin': '👑 (관리자)',
                     'student': '👤 (학생)',
                     'parent': '👨‍👩‍👧 (학부모)'
                 }[currentUser.type] || '';
-
+                
                 document.getElementById('userName').textContent = `${currentUser.name}${typeBadge}`;
                 startSection.classList.add('hidden');
                 welcomeMsg.innerHTML = `✨ <strong>${currentUser.name}님 환영합니다!</strong>`;
                 welcomeMsg.className = 'alert alert-success';
-
+                
                 qnaPostBtn.style.display = 'block';
 
                 // 관리자만 관리 메뉴 보이기
@@ -877,14 +969,13 @@
             }
         };
 
-        // ========== 로그인 ==========
+        // ========== 일반 로그인 ==========
         const handleLogin = (e) => {
             e.preventDefault();
             const input = document.getElementById('loginEmail').value;
             const password = document.getElementById('loginPassword').value;
             const users = JSON.parse(localStorage.getItem('users'));
 
-            // 아이디 또는 이메일로 로그인
             let user = users.find(u => (u.email === input || u.userId === input) && u.password === password && u.status === 'approved');
 
             if (user) {
@@ -898,7 +989,7 @@
             }
         };
 
-        // ========== 회원가입 ==========
+        // ========== 일반 회원가입 ==========
         const updateStudentField = () => {
             const type = document.querySelector('input[name="accountType"]:checked').value;
             const field = document.getElementById('studentField');
@@ -940,7 +1031,49 @@
             localStorage.setItem('pendingUsers', JSON.stringify(pendingUsers));
             closeSignupModal();
             alert('회원가입 신청이 완료되었습니다. 관리자 승인을 기다려주세요.');
-            document.querySelector('#signupModal form').reset();
+            document.querySelector('#signupForm').reset();
+        };
+
+        // ========== Google 회원가입 ==========
+        const updateGoogleStudentField = () => {
+            const type = document.querySelector('input[name="googleAccountType"]:checked').value;
+            const field = document.getElementById('googleStudentField');
+            if (type === 'student') {
+                field.style.display = 'block';
+            } else {
+                field.style.display = 'none';
+            }
+        };
+
+        const completeGoogleSignup = (e) => {
+            e.preventDefault();
+            const type = document.querySelector('input[name="googleAccountType"]:checked').value;
+            const studentId = type === 'student' ? document.getElementById('googleStudent').value : '';
+
+            const pendingUsers = JSON.parse(localStorage.getItem('pendingUsers'));
+
+            const newUser = {
+                id: Date.now(),
+                name: tempGoogleData.name,
+                email: tempGoogleData.email,
+                userId: tempGoogleData.email.split('@')[0],
+                password: 'google-oauth',
+                type,
+                studentId,
+                status: 'pending',
+                googleAuth: true
+            };
+
+            pendingUsers.push(newUser);
+            localStorage.setItem('pendingUsers', JSON.stringify(pendingUsers));
+            closeGoogleTypeModal();
+            alert('Google 계정으로 회원가입 신청이 완료되었습니다. 관리자 승인을 기다려주세요.');
+            tempGoogleData = null;
+        };
+
+        const closeGoogleTypeModal = () => {
+            document.getElementById('googleTypeModal').style.display = 'none';
+            document.querySelector('#googleTypeModal form').reset();
         };
 
         // ========== 로그아웃 ==========
@@ -962,7 +1095,7 @@
         const openSignupModal = () => document.getElementById('signupModal').style.display = 'block';
         const closeSignupModal = () => {
             document.getElementById('signupModal').style.display = 'none';
-            document.querySelector('#signupModal form').reset();
+            document.querySelector('#signupForm').reset();
         };
 
         const openPostModal = (type) => {
@@ -1040,10 +1173,10 @@
             const healthInfo = JSON.parse(localStorage.getItem('healthInfo'));
             healthInfo[currentHealthType] = document.getElementById('editHealthContent').value;
             localStorage.setItem('healthInfo', JSON.stringify(healthInfo));
-
+            
             const contentIds = { wash: 'washContent', nutrition: 'nutritionContent', exercise: 'exerciseContent' };
             document.getElementById(contentIds[currentHealthType]).textContent = healthInfo[currentHealthType];
-
+            
             closeEditHealthModal();
             alert('저장되었습니다!');
         };
@@ -1136,17 +1269,10 @@
 
             if (tab === 'approval') {
                 document.getElementById('approvalTab').style.display = 'block';
-                document.getElementById('usersTab').style.display = 'none';
                 document.getElementById('contentTab').style.display = 'none';
                 loadPendingUsers();
-            } else if (tab === 'users') {
-                document.getElementById('approvalTab').style.display = 'none';
-                document.getElementById('usersTab').style.display = 'block';
-                document.getElementById('contentTab').style.display = 'none';
-                loadApprovedUsers();
             } else {
                 document.getElementById('approvalTab').style.display = 'none';
-                document.getElementById('usersTab').style.display = 'none';
                 document.getElementById('contentTab').style.display = 'block';
             }
         };
@@ -1165,10 +1291,12 @@
                         'admin': '👑 관리자'
                     }[user.type] || user.type;
 
+                    const authLabel = user.googleAuth ? ' (Google)' : '';
+
                     html += `
                         <div class="approval-item">
                             <div class="approval-info">
-                                <div class="approval-name">${user.name}</div>
+                                <div class="approval-name">${user.name}${authLabel}</div>
                                 <div class="approval-email">${user.email}</div>
                                 <span class="approval-type">${typeLabel}</span>
                             </div>
@@ -1182,45 +1310,6 @@
             }
 
             document.getElementById('pendingList').innerHTML = html;
-        };
-
-        const loadApprovedUsers = () => {
-            const users = JSON.parse(localStorage.getItem('users'));
-            const adminUser = currentUser;
-            let html = '';
-
-            // 자신을 제외한 다른 사용자만 표시
-            const otherUsers = users.filter(u => u.id !== adminUser.id && u.status === 'approved');
-
-            if (otherUsers.length === 0) {
-                html = '<p style="text-align: center; color: #999; padding: 30px;">가입한 회원이 없습니다.</p>';
-            } else {
-                otherUsers.forEach((user, index) => {
-                    const typeLabel = {
-                        'student': '👤 학생',
-                        'parent': '👨‍👩‍👧 학부모',
-                        'admin': '👑 관리자'
-                    }[user.type] || user.type;
-
-                    const studentInfo = user.studentId ? `<div class="approval-email" style="margin-top: 5px;">📚 ${user.studentId}</div>` : '';
-
-                    html += `
-                        <div class="approval-item">
-                            <div class="approval-info">
-                                <div class="approval-name">${user.name}</div>
-                                <div class="approval-email">${user.email}</div>
-                                ${studentInfo}
-                                <span class="approval-type">${typeLabel}</span>
-                            </div>
-                            <div class="approval-actions">
-                                <button class="btn-small btn-reject" onclick="deleteUserByAdmin(${user.id})" style="background: #e74c3c;">🗑️ 삭제</button>
-                            </div>
-                        </div>
-                    `;
-                });
-            }
-
-            document.getElementById('usersList').innerHTML = html;
         };
 
         const approveUser = (index) => {
@@ -1248,48 +1337,6 @@
 
             loadPendingUsers();
             alert(`${user.name}님의 회원가입을 거부했습니다.`);
-        };
-
-        const deleteUserByAdmin = (userId) => {
-            if (confirm('이 사용자를 삭제하시겠습니까?')) {
-                const users = JSON.parse(localStorage.getItem('users'));
-                const userIndex = users.findIndex(u => u.id === userId);
-                
-                if (userIndex > -1) {
-                    const deletedUser = users[userIndex];
-                    users.splice(userIndex, 1);
-                    localStorage.setItem('users', JSON.stringify(users));
-                    loadApprovedUsers();
-                    alert(`${deletedUser.name}님의 계정이 삭제되었습니다.`);
-                }
-            }
-        };
-
-        // ========== 회원탈퇴 ==========
-        const openDeleteAccountModal = () => {
-            document.getElementById('deleteAccountModal').style.display = 'block';
-        };
-
-        const closeDeleteAccountModal = () => {
-            document.getElementById('deleteAccountModal').style.display = 'none';
-        };
-
-        const confirmDeleteAccount = () => {
-            const users = JSON.parse(localStorage.getItem('users'));
-            const userIndex = users.findIndex(u => u.id === currentUser.id);
-
-            if (userIndex > -1) {
-                const userName = users[userIndex].name;
-                users.splice(userIndex, 1);
-                localStorage.setItem('users', JSON.stringify(users));
-                
-                currentUser = null;
-                localStorage.removeItem('currentUser');
-                closeDeleteAccountModal();
-                updateUI();
-                showHome();
-                alert(`${userName}님의 계정이 삭제되었습니다. 그동안 이용해주셔서 감사합니다!`);
-            }
         };
 
         // ========== 페이지 전환 ==========
@@ -1344,44 +1391,6 @@
             document.getElementById('exerciseContent').textContent = healthInfo.exercise;
         };
 
-        // ========== Google 가입 관련 추가 함수 ==========
-        let tempGoogleData = null;
-
-        const handleGoogleSignupClick = () => {
-            // Google One Tap 프롬프트 표시
-            google.accounts.id.prompt((notification) => {
-                if (notification.isNotDisplayed() || notification.isSkippedMoment()) {
-                    console.log("Google One Tap not displayed, waiting for user interaction");
-                }
-            });
-        };
-
-        const submitGoogleSignup = () => {
-            const selectedType = document.querySelector('input[name="googleAccountType"]:checked').value;
-            const users = JSON.parse(localStorage.getItem('users'));
-
-            const newUser = {
-                id: Date.now(),
-                name: tempGoogleData.name,
-                email: tempGoogleData.email,
-                userId: tempGoogleData.email.split('@')[0],
-                password: 'GOOGLE_AUTH_USER',
-                type: selectedType,
-                status: 'approved'
-            };
-
-            users.push(newUser);
-            localStorage.setItem('users', JSON.stringify(users));
-            currentUser = newUser;
-            localStorage.setItem('currentUser', JSON.stringify(newUser));
-
-            document.getElementById('googleTypeModal').style.display = 'none';
-            closeSignupModal();
-            updateUI();
-            alert(`Google 계정(${tempGoogleData.name}님)으로 가입 및 로그인되었습니다!`);
-            tempGoogleData = null;
-        };
-
         // ========== 모달 외부 클릭 ==========
         window.onclick = (event) => {
             if (event.target.classList.contains('modal')) {
@@ -1390,104 +1399,8 @@
         };
 
         // ========== 초기화 ==========
-        window.onload = function () {
-            try {
-                // Google Login 초기 설정
-                // ⚠️ 중요: 아래 CLIENT_ID를 자신의 Google Cloud Console Client ID로 변경하세요!
-                // https://console.cloud.google.com → APIs 및 서비스 → 사용자 인증 정보 에서 확인
-                const CLIENT_ID = "YOUR_GOOGLE_CLIENT_ID_HERE";
-                
-                console.log("🚀 배포용 Google OAuth 활성화");
-                console.log("Client ID:", CLIENT_ID);
-                
-                // 배포 환경: 실제 Google OAuth 사용
-                google.accounts.id.initialize({
-                    client_id: CLIENT_ID,
-                    callback: handleCredentialResponse,
-                    auto_select: false
-                });
-
-                // 로그인 모달의 구글 버튼 렌더링
-                google.accounts.id.renderButton(
-                    document.getElementById("googleLoginBtn"),
-                    { 
-                        theme: "outline", 
-                        size: "large", 
-                        width: "100%",
-                        text: "signin_with"
-                    }
-                );
-
-                // 회원가입 페이지의 커스텀 Google 버튼
-                const googleSignupBtn = document.getElementById("googleSignupBtn");
-                if (googleSignupBtn) {
-                    const signupButton = googleSignupBtn.querySelector('button');
-                    if (signupButton) {
-                        signupButton.onclick = function(e) {
-                            e.preventDefault();
-                            handleGoogleSignupClick();
-                            return false;
-                        };
-                    }
-                }
-
-                console.log("✅ Google OAuth 초기화 완료");
-            } catch (error) {
-                console.error("❌ Google API initialization error:", error);
-                alert("Google OAuth 초기화 실패\n\n확인사항:\n1. Client ID가 올바른지 확인\n2. Google Cloud Console에서 도메인이 등록되었는지 확인\n3. 배포 도메인: https://yourdomain.com");
-            }
-        };
-
-        // ========== Google 로그인 핸들러 ==========
-        function handleCredentialResponse(response) {
-            try {
-                console.log("Google login successful!");
-                
-                // JWT 디코딩 (UTF-8 대응)
-                const base64Url = response.credential.split('.')[1];
-                const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
-                const jsonPayload = decodeURIComponent(atob(base64).split('').map(function (c) {
-                    return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
-                }).join(''));
-
-                const payload = JSON.parse(jsonPayload);
-                console.log("Google User Data:", payload);
-
-                const email = payload.email;
-                const name = payload.name;
-                const users = JSON.parse(localStorage.getItem('users'));
-
-                // 기존 사용자 확인
-                let user = users.find(u => u.email === email);
-
-                if (!user) {
-                    // 구글 계정으로 첫 로그인 시 계정 유형 선택 모달 표시
-                    console.log("New Google user - showing account type selection");
-                    tempGoogleData = { name, email };
-                    document.getElementById('googleTypeModal').style.display = 'block';
-                    return;
-                } else if (user.status === 'pending') {
-                    alert('❌ 회원가입이 아직 관리자 승인 대기 중입니다.\n관리자의 승인을 기다려주세요.');
-                    return;
-                } else if (user.status === 'approved') {
-                    console.log("Existing Google user - logging in");
-                    alert(`✅ ${name}님, Google 계정으로 로그인되었습니다!`);
-                    currentUser = user;
-                    localStorage.setItem('currentUser', JSON.stringify(user));
-                    closeLoginModal();
-                    closeSignupModal();
-                    updateUI();
-                    showHome();
-                }
-            } catch (error) {
-                console.error("Google login error:", error);
-                alert("❌ Google 로그인 중 오류가 발생했습니다.\n\n" + error.message);
-            }
-        }
-
         updateUI();
         loadHomeContent();
     </script>
 </body>
-
 </html>
