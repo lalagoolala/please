@@ -1,0 +1,1493 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>5학년 보건수업</title>
+    <link href="https://fonts.googleapis.com/css2?family=Jua:wght@400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap"
+        rel="stylesheet">
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <style>
+        * {
+            font-family: 'Noto Sans KR', 'Jua', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 0;
+        }
+
+        .navbar {
+            background: linear-gradient(90deg, #ff6b6b 0%, #ff8c42 50%, #ffd93d 100%);
+            padding: 1rem 2rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .navbar-brand {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1rem;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+
+        .nav-links a,
+        .nav-links button {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            border: none;
+            cursor: pointer;
+            background: transparent;
+            transition: all 0.3s;
+            font-size: 0.95rem;
+        }
+
+        .nav-links a:hover,
+        .nav-links button:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .container {
+            background-color: white;
+            border-radius: 20px;
+            padding: 40px;
+            margin: 30px auto;
+            max-width: 1000px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            color: #ff6b6b;
+            font-size: 3rem;
+            text-align: center;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(255, 107, 107, 0.2);
+        }
+
+        .lead {
+            text-align: center;
+            font-size: 1.3rem;
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        .alert {
+            padding: 15px 20px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            text-align: center;
+            color: white;
+            font-size: 1.1rem;
+        }
+
+        .alert-info {
+            background: linear-gradient(90deg, #667eea, #764ba2);
+        }
+
+        .alert-success {
+            background: linear-gradient(90deg, #11998e, #38ef7d);
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .card {
+            border: none;
+            border-radius: 15px;
+            padding: 30px;
+            background: white;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            border-left: 5px solid #ff6b6b;
+            transition: all 0.3s;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .card.qna {
+            border-left-color: #667eea;
+        }
+
+        .card-title {
+            font-size: 1.5rem;
+            color: #ff6b6b;
+            margin-bottom: 10px;
+        }
+
+        .card.qna .card-title {
+            color: #667eea;
+        }
+
+        .card-text {
+            font-size: 1.1rem;
+            color: #555;
+            margin-bottom: 20px;
+        }
+
+        .edit-btn {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: #ff6b6b;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            display: none;
+        }
+
+        .btn {
+            padding: 12px 20px;
+            border: none;
+            border-radius: 10px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(90deg, #ff6b6b, #ff8c42);
+            color: white;
+        }
+
+        .btn-secondary {
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            color: white;
+        }
+
+        .tips {
+            background: linear-gradient(135deg, #e0f7ff 0%, #d4f1f9 100%);
+            border-left: 5px solid #3498db;
+            border-radius: 15px;
+            padding: 25px;
+            margin: 30px 0;
+            position: relative;
+        }
+
+        .tips h4 {
+            color: #2c3e50;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .tips ul {
+            list-style: none;
+            color: #555;
+            font-size: 1rem;
+            line-height: 1.8;
+        }
+
+        .tips li:before {
+            content: "✓ ";
+            color: #3498db;
+            font-weight: bold;
+            margin-right: 8px;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .modal-content {
+            background-color: white;
+            margin: 5% auto;
+            padding: 30px;
+            border: none;
+            border-radius: 20px;
+            width: 90%;
+            max-width: 500px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close:hover {
+            color: #000;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #ff6b6b;
+            font-weight: bold;
+        }
+
+        input,
+        textarea,
+        select {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid #ff6b6b;
+            border-radius: 10px;
+            font-family: inherit;
+            font-size: 1rem;
+        }
+
+        input:focus,
+        textarea:focus,
+        select:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 5px rgba(102, 126, 234, 0.3);
+        }
+
+        .post-item {
+            border-bottom: 1px solid #eee;
+            padding: 15px 0;
+        }
+
+        .post-item:last-child {
+            border-bottom: none;
+        }
+
+        .post-title {
+            color: #ff6b6b;
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+
+        .post-author {
+            color: #999;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+
+        .post-content {
+            color: #555;
+            line-height: 1.5;
+            margin-bottom: 10px;
+        }
+
+        .comment {
+            background: #f9f9f9;
+            border-left: 3px solid #667eea;
+            padding: 10px;
+            margin: 10px 0 10px 20px;
+            border-radius: 5px;
+            font-size: 0.95rem;
+        }
+
+        .comment-author {
+            color: #667eea;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+        .comment-text {
+            color: #555;
+            margin-top: 5px;
+        }
+
+        .approval-list {
+            border: 1px solid #eee;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+
+        .approval-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .approval-item:last-child {
+            border-bottom: none;
+        }
+
+        .approval-info {
+            flex: 1;
+        }
+
+        .approval-name {
+            font-weight: bold;
+            color: #333;
+        }
+
+        .approval-email {
+            color: #999;
+            font-size: 0.9rem;
+        }
+
+        .approval-type {
+            background: #667eea;
+            color: white;
+            padding: 3px 8px;
+            border-radius: 5px;
+            font-size: 0.8rem;
+            margin-left: 10px;
+        }
+
+        .approval-actions {
+            gap: 10px;
+        }
+
+        .btn-small {
+            padding: 6px 12px;
+            font-size: 0.85rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-left: 5px;
+        }
+
+        .btn-approve {
+            background: #11998e;
+            color: white;
+        }
+
+        .btn-reject {
+            background: #e74c3c;
+            color: white;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #eee;
+        }
+
+        .tab-btn {
+            padding: 10px 20px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+            color: #999;
+            border-bottom: 3px solid transparent;
+        }
+
+        .tab-btn.active {
+            color: #ff6b6b;
+            border-bottom-color: #ff6b6b;
+        }
+
+        .radio-group {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 10px;
+            margin: 10px 0;
+        }
+
+        .radio-group label {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0;
+            cursor: pointer;
+        }
+
+        .radio-group input[type="radio"] {
+            width: auto;
+            margin-right: 10px;
+            border: none;
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            .card-grid {
+                grid-template-columns: 1fr;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .navbar {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="navbar-brand">🏥 5학년 보건교실</div>
+        <ul class="nav-links">
+            <li><a href="#" onclick="showHome()">🏠 홈</a></li>
+            <li id="adminMenuLink" class="hidden"><a href="#" onclick="showAdminPanel()">⚙️ 관리</a></li>
+            <li><a href="#" onclick="showQNA()">❓ 질의응답</a></li>
+            <li id="userMenu" class="hidden">
+                <span id="userName"></span>
+                <button onclick="openDeleteAccountModal()" style="background: rgba(255,255,255,0.3); margin-left: 10px;">🗑️ 회원탈퇴</button>
+                <button onclick="logout()" style="background: rgba(255,255,255,0.3); margin-left: 5px;">🚪 로그아웃</button>
+            </li>
+            <li id="authMenu">
+                <button onclick="openLoginModal()">🔐 로그인</button>
+                <button onclick="openSignupModal()">📝 회원가입</button>
+            </li>
+        </ul>
+    </nav>
+
+    <div class="container" id="mainContent">
+        <div style="text-align: center;">
+            <div style="font-size: 3rem; margin-bottom: 20px;">🏥</div>
+            <h1>환영합니다! 👋</h1>
+            <p class="lead">우리들의 건강을 지키는 5학년 보건수업 홈페이지입니다.</p>
+            <hr style="border: 2px solid #ff6b6b; margin: 20px 0;">
+
+            <div id="welcomeMsg" class="alert alert-info">
+                🎉 로그인하고 보건수업에 참여하세요!
+            </div>
+
+            <div class="card-grid">
+                <div class="card" onclick="showNotice()">
+                    <button class="edit-btn" id="editNoticeBtn" onclick="openEditNoticeModal(event)">수정</button>
+                    <h5 class="card-title">📢 공지사항</h5>
+                    <p class="card-text" id="noticePreview">선생님의 중요한 공지사항을 확인하세요. 건강 관련 소식과 학습 정보가 여기 있습니다!</p>
+                    <button class="btn btn-primary">공지사항 보기</button>
+                </div>
+
+                <div class="card qna" onclick="showQNA()">
+                    <h5 class="card-title">❓ 질의응답</h5>
+                    <p class="card-text">보건 선생님께 건강에 대해 물어보세요. 모든 질문을 환영합니다!</p>
+                    <button class="btn btn-secondary">질문하러 가기</button>
+                </div>
+            </div>
+
+            <div class="card-grid" style="grid-template-columns: repeat(3, 1fr);">
+                <div class="card" style="border-left-color: #11998e;">
+                    <button class="edit-btn" id="editWashBtn" onclick="openEditHealthModal(event, 'wash')">수정</button>
+                    <div style="font-size: 2.5rem; margin-bottom: 10px;">🧼</div>
+                    <h5 class="card-title" style="color: #11998e;">손 씻기</h5>
+                    <p class="card-text" id="washContent">질병 예방의 첫 번째 단계는 깨끗한 손 씻기입니다!</p>
+                </div>
+
+                <div class="card" style="border-left-color: #ffa502;">
+                    <button class="edit-btn" id="editNutritionBtn"
+                        onclick="openEditHealthModal(event, 'nutrition')">수정</button>
+                    <div style="font-size: 2.5rem; margin-bottom: 10px;">🥗</div>
+                    <h5 class="card-title" style="color: #ffa502;">영양 관리</h5>
+                    <p class="card-text" id="nutritionContent">균형 잡힌 식단은 건강한 성장의 기본입니다!</p>
+                </div>
+
+                <div class="card" style="border-left-color: #3498db;">
+                    <button class="edit-btn" id="editExerciseBtn"
+                        onclick="openEditHealthModal(event, 'exercise')">수정</button>
+                    <div style="font-size: 2.5rem; margin-bottom: 10px;">🏃</div>
+                    <h5 class="card-title" style="color: #3498db;">운동과 휴식</h5>
+                    <p class="card-text" id="exerciseContent">적절한 운동과 휴식은 건강한 생활의 필수요소입니다!</p>
+                </div>
+            </div>
+
+            <div class="tips">
+                <h4>💡 건강 생활의 팁</h4>
+                <ul>
+                    <li>매일 8시간 이상의 충분한 수면을 취하세요</li>
+                    <li>하루에 물을 6-8잔 마셔 수분을 유지하세요</li>
+                    <li>매일 30분 이상 운동하세요</li>
+                    <li>약 1시간마다 눈을 쉬게 해주세요</li>
+                    <li>스트레스를 풀기 위해 좋아하는 활동을 하세요</li>
+                </ul>
+            </div>
+
+            <div id="startSection" class="card"
+                style="border-left-color: #ff8c42; background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%); color: white; margin-top: 30px;">
+                <h3 style="color: #ff8c42; margin-bottom: 15px;">🚀 지금 바로 시작해보세요!</h3>
+                <p style="color: #555; margin-bottom: 20px; font-size: 1.1rem;">로그인하고 보건수업에 더 적극적으로 참여해보세요!</p>
+                <button class="btn"
+                    style="background: linear-gradient(90deg, #ff8c42, #ffd93d); color: white; margin-right: 10px;"
+                    onclick="openSignupModal()">📝 회원가입</button>
+                <button class="btn" style="background: white; color: #ff8c42; border: 2px solid #ff8c42;"
+                    onclick="openLoginModal()">🔐 로그인</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 공지사항 페이지 -->
+    <div id="noticePage" class="hidden container">
+        <h1>📢 공지사항</h1>
+        <div id="noticeList"></div>
+    </div>
+
+    <!-- 질의응답 페이지 -->
+    <div id="qnaPage" class="hidden container">
+        <h1>❓ 질의응답</h1>
+        <button id="qnaPostBtn" class="btn btn-primary" onclick="openPostModal('qna')"
+            style="display: none; margin-bottom: 20px;">✏️ 질문 작성</button>
+        <div id="qnaList"></div>
+    </div>
+
+    <!-- 관리자 패널 -->
+    <div id="adminPanel" class="hidden container">
+        <h1>⚙️ 관리자 패널</h1>
+        <div class="tabs">
+            <button class="tab-btn active" onclick="switchAdminTab('approval')">회원가입 승인</button>
+                <button class="tab-btn" onclick="switchAdminTab('users')">회원 관리</button>
+                <button class="tab-btn" onclick="switchAdminTab('content')">콘텐츠 편집</button>
+            </div>
+
+            <!-- 회원가입 승인 탭 -->
+            <div id="approvalTab">
+                <h2 style="color: #ff6b6b; margin-bottom: 20px;">대기 중인 회원가입</h2>
+                <div id="pendingList" class="approval-list"></div>
+            </div>
+
+            <!-- 회원 관리 탭 -->
+            <div id="usersTab" style="display: none;">
+                <h2 style="color: #ff6b6b; margin-bottom: 20px;">가입 회원 목록</h2>
+                <div id="usersList" class="approval-list"></div>
+            <p style="color: #666; margin-bottom: 20px;">홈페이지의 주요 콘텐츠를 수정할 수 있습니다.</p>
+        </div>
+    </div>
+
+    <!-- 로그인 모달 -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeLoginModal()">&times;</span>
+            <h2>🔐 로그인</h2>
+            <form onsubmit="handleLogin(event)">
+                <div class="form-group">
+                    <label>📧 이메일 또는 아이디</label>
+                    <input type="text" id="loginEmail" required>
+                </div>
+                <div class="form-group">
+                    <label>🔑 비밀번호</label>
+                    <input type="password" id="loginPassword" required>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 20px;">로그인</button>
+            </form>
+            <div style="margin: 20px 0; text-align: center; position: relative;">
+                <hr style="border: 0; border-top: 1px solid #eee;">
+                <span
+                    style="position: absolute; top: -10px; left: 50%; transform: translateX(-50%); background: white; padding: 0 10px; color: #999; font-size: 0.8rem;">또는</span>
+            </div>
+            <div id="googleLoginBtn" style="display: flex; justify-content: center;"></div>
+            <hr style="margin: 20px 0;">
+            <p style="text-align: center; color: #666;">계정이 없으신가요? <button
+                    onclick="closeLoginModal(); openSignupModal();"
+                    style="background: none; border: none; color: #ff6b6b; font-weight: bold; cursor: pointer;">회원가입하기</button>
+            </p>
+        </div>
+    </div>
+
+    <!-- 회원가입 모달 -->
+    <div id="signupModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeSignupModal()">&times;</span>
+            <h2>📝 회원가입</h2>
+            <form onsubmit="handleSignup(event)">
+                <div class="form-group">
+                    <label>👤 이름</label>
+                    <input type="text" id="signupName" required>
+                </div>
+                <div class="form-group">
+                    <label>📧 이메일</label>
+                    <input type="email" id="signupEmail" required>
+                </div>
+                <div class="form-group">
+                    <label>👥 계정 유형</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="accountType" value="student" required
+                                onchange="updateStudentField()"> 🎓 학생</label>
+                        <label><input type="radio" name="accountType" value="parent" required
+                                onchange="updateStudentField()"> 👨‍👩‍👧 학부모</label>
+                        <label><input type="radio" name="accountType" value="admin" required
+                                onchange="updateStudentField()"> 👑 관리자</label>
+                    </div>
+                </div>
+                <div class="form-group" id="studentField" style="display: none;">
+                    <label>📚 학년 반 번호</label>
+                    <input type="text" id="signupStudent" placeholder="예: 5학년 1반 10번">
+                </div>
+                <div class="form-group">
+                    <label>🔑 비밀번호</label>
+                    <input type="password" id="signupPassword" required>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 20px;">가입신청</button>
+            </form>
+            <div style="margin: 20px 0; text-align: center; position: relative;">
+                <hr style="border: 0; border-top: 1px solid #eee;">
+                <span
+                    style="position: absolute; top: -10px; left: 50%; transform: translateX(-50%); background: white; padding: 0 10px; color: #999; font-size: 0.8rem;">또는</span>
+            </div>
+            <div id="googleSignupBtn" style="display: flex; justify-content: center;">
+                <button onclick="handleGoogleSignupClick()" type="button"
+                    style="display: flex; align-items: center; justify-content: center; width: 100%; padding: 10px; background: white; border: 1px solid #dadce0; border-radius: 4px; color: #3c4043; cursor: pointer; font-family: 'Roboto', arial, sans-serif; font-size: 14px; font-weight: 500; transition: background-color .218s, border-color .218s, box-shadow .218s;">
+                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="18px" height="18px"
+                        viewBox="-3 0 26 24" style="margin-right: 10px;">
+                        <path fill="#4285F4"
+                            d="M19 12.2c0-.6-.1-1.2-.2-1.8H10v3.4h5.1c-.2 1.2-.9 2.1-2 2.8v2.3h3.2c1.9-1.8 3-4.3 3-6.7z">
+                        </path>
+                        <path fill="#34A853"
+                            d="M10 20c2.7 0 5-1 6.7-2.6l-3.2-2.3c-.9.6-2.1 1-3.5 1-2.6 0-4.8-1.8-5.6-4.2H1.2v2.5C2.9 17.8 6.2 20 10 20z">
+                        </path>
+                        <path fill="#FBBC05"
+                            d="M4.4 11.9c-.2-.6-.2-1.3 0-2V7.4H1.2C.4 8.9 0 10.4 0 12s.4 3.1 1.2 4.6l3.2-2.5c-.2-.6-.2-1.2 0-2.2z">
+                        </path>
+                        <path fill="#EA4335"
+                            d="M10 4.4c1.5 0 2.8.5 3.9 1.5l2.9-2.9C15 1.7 12.7 0 10 0 6.2 0 2.9 2.2 1.2 5.5l3.2 2.5c.8-2.4 3-4.1 5.6-4.1z">
+                        </path>
+                    </svg>
+                    Google 계정으로 회원가입
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 게시물 작성 모달 -->
+    <div id="postModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closePostModal()">&times;</span>
+            <h2 id="postModalTitle">질문 작성</h2>
+            <form onsubmit="handlePostSubmit(event)">
+                <div class="form-group">
+                    <label>제목</label>
+                    <input type="text" id="postTitle" required>
+                </div>
+                <div class="form-group">
+                    <label>내용</label>
+                    <textarea id="postContent" rows="5" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 20px;">작성</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- 댓글 작성 모달 -->
+    <div id="commentModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeCommentModal()">&times;</span>
+            <h2>💬 댓글 작성</h2>
+            <form onsubmit="handleCommentSubmit(event)">
+                <div class="form-group">
+                    <label>댓글</label>
+                    <textarea id="commentText" rows="3" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 20px;">댓글 작성</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- 공지사항 수정 모달 -->
+    <div id="editNoticeModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeEditNoticeModal()">&times;</span>
+            <h2>📢 공지사항 수정</h2>
+            <form onsubmit="handleEditNotice(event)">
+                <div class="form-group">
+                    <label>제목</label>
+                    <input type="text" id="editNoticeTitle" required>
+                </div>
+                <div class="form-group">
+                    <label>내용</label>
+                    <textarea id="editNoticeContent" rows="5" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 20px;">저장</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- 건강 정보 수정 모달 -->
+    <div id="editHealthModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeEditHealthModal()">&times;</span>
+            <h2 id="editHealthTitle">내용 수정</h2>
+            <form onsubmit="handleEditHealth(event)">
+                <div class="form-group">
+                    <label>내용</label>
+                    <textarea id="editHealthContent" rows="5" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 20px;">저장</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- 구글 가입 유형 선택 모달 -->
+    <div id="googleTypeModal" class="modal">
+        <div class="modal-content">
+            <h2>👥 계정 유형 선택</h2>
+            <p style="margin-bottom: 20px; color: #666;">Google 계정으로 처음 가입하셨습니다. 사용하실 계정 유형을 선택해주세요.</p>
+            <div class="radio-group">
+                <label><input type="radio" name="googleAccountType" value="student" checked> 🎓 학생</label>
+                <label><input type="radio" name="googleAccountType" value="parent"> 👨‍👩‍👧 학부모</label>
+                <label><input type="radio" name="googleAccountType" value="admin"> 👑 관리자</label>
+            </div>
+            <button onclick="submitGoogleSignup()" class="btn btn-primary" style="width: 100%; margin-top: 20px;">가입
+                완료</button>
+        </div>
+    </div>
+
+    <!-- 회원탈퇴 확인 모달 -->
+    <div id="deleteAccountModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeDeleteAccountModal()">&times;</span>
+            <h2 style="color: #e74c3c;">🗑️ 회원탈퇴</h2>
+            <p style="margin: 20px 0; color: #666; font-size: 1.1rem;">정말로 회원탈퇴 하시겠습니까?</p>
+            <p style="margin: 15px 0; color: #999; font-size: 0.95rem;">⚠️ 회원탈퇴 후에는 계정을 복구할 수 없습니다.</p>
+            <div style="display: flex; gap: 10px; margin-top: 30px;">
+                <button onclick="confirmDeleteAccount()" class="btn" style="background: #e74c3c; color: white; flex: 1;">확인 - 회원탈퇴</button>
+                <button onclick="closeDeleteAccountModal()" class="btn" style="background: #95a5a6; color: white; flex: 1;">취소</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ========== 데이터 초기화 ==========
+        const initStorage = () => {
+            // 관리자 계정 미리 생성
+            if (!localStorage.getItem('users')) {
+                const adminUser = {
+                    id: 1,
+                    name: '보건선생님',
+                    email: 'admin@health.com',
+                    userId: 'abc',
+                    password: '1234',
+                    type: 'admin',
+                    status: 'approved'
+                };
+                localStorage.setItem('users', JSON.stringify([adminUser]));
+            }
+
+            // 대기 중인 회원
+            if (!localStorage.getItem('pendingUsers')) {
+                localStorage.setItem('pendingUsers', JSON.stringify([]));
+            }
+
+            // 공지사항
+            if (!localStorage.getItem('notice')) {
+                localStorage.setItem('notice', JSON.stringify({
+                    title: '건강 습관 챌린지',
+                    content: '이번 달부터 건강 습관 챌린지를 시작합니다! 손 씻기, 운동, 충분한 수면 등을 실천해보세요!'
+                }));
+            }
+
+            // 건강 정보
+            if (!localStorage.getItem('healthInfo')) {
+                localStorage.setItem('healthInfo', JSON.stringify({
+                    wash: '질병 예방의 첫 번째 단계는 깨끗한 손 씻기입니다! 비누를 사용하여 20초 이상 손을 씻어야 합니다.',
+                    nutrition: '균형 잡힌 식단은 건강한 성장의 기본입니다! 탄수화물, 단백질, 지방을 골고루 섭취하세요.',
+                    exercise: '적절한 운동과 휴식은 건강한 생활의 필수요소입니다! 매일 1시간 이상 운동하고 충분히 쉬세요.'
+                }));
+            }
+
+            // 질의응답
+            if (!localStorage.getItem('qnaList')) {
+                localStorage.setItem('qnaList', JSON.stringify([]));
+            }
+        };
+
+        initStorage();
+
+        // ========== 사용자 상태 ==========
+        let currentUser = localStorage.getItem('currentUser') ? JSON.parse(localStorage.getItem('currentUser')) : null;
+        let currentPostId = null;
+        let currentHealthType = null;
+
+        // ========== UI 업데이트 ==========
+        const updateUI = () => {
+            const userMenu = document.getElementById('userMenu');
+            const authMenu = document.getElementById('authMenu');
+            const adminLink = document.getElementById('adminMenuLink');
+            const startSection = document.getElementById('startSection');
+            const welcomeMsg = document.getElementById('welcomeMsg');
+            const qnaPostBtn = document.getElementById('qnaPostBtn');
+            const editButtons = document.querySelectorAll('.edit-btn');
+
+            if (currentUser) {
+                userMenu.classList.remove('hidden');
+                authMenu.classList.add('hidden');
+
+                const typeBadge = {
+                    'admin': '👑 (관리자)',
+                    'student': '👤 (학생)',
+                    'parent': '👨‍👩‍👧 (학부모)'
+                }[currentUser.type] || '';
+
+                document.getElementById('userName').textContent = `${currentUser.name}${typeBadge}`;
+                startSection.classList.add('hidden');
+                welcomeMsg.innerHTML = `✨ <strong>${currentUser.name}님 환영합니다!</strong>`;
+                welcomeMsg.className = 'alert alert-success';
+
+                qnaPostBtn.style.display = 'block';
+
+                // 관리자만 관리 메뉴 보이기
+                if (currentUser.type === 'admin') {
+                    adminLink.classList.remove('hidden');
+                    editButtons.forEach(btn => btn.style.display = 'block');
+                } else {
+                    adminLink.classList.add('hidden');
+                    editButtons.forEach(btn => btn.style.display = 'none');
+                }
+            } else {
+                userMenu.classList.add('hidden');
+                authMenu.classList.remove('hidden');
+                adminLink.classList.add('hidden');
+                startSection.classList.remove('hidden');
+                qnaPostBtn.style.display = 'none';
+                editButtons.forEach(btn => btn.style.display = 'none');
+            }
+        };
+
+        // ========== 로그인 ==========
+        const handleLogin = (e) => {
+            e.preventDefault();
+            const input = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+            const users = JSON.parse(localStorage.getItem('users'));
+
+            // 아이디 또는 이메일로 로그인
+            let user = users.find(u => (u.email === input || u.userId === input) && u.password === password && u.status === 'approved');
+
+            if (user) {
+                currentUser = user;
+                localStorage.setItem('currentUser', JSON.stringify(user));
+                closeLoginModal();
+                updateUI();
+                alert('로그인되었습니다!');
+            } else {
+                alert('로그인 정보가 일치하지 않거나 승인 대기 중입니다.');
+            }
+        };
+
+        // ========== 회원가입 ==========
+        const updateStudentField = () => {
+            const type = document.querySelector('input[name="accountType"]:checked').value;
+            const field = document.getElementById('studentField');
+            if (type === 'student') {
+                field.style.display = 'block';
+            } else {
+                field.style.display = 'none';
+            }
+        };
+
+        const handleSignup = (e) => {
+            e.preventDefault();
+            const name = document.getElementById('signupName').value;
+            const email = document.getElementById('signupEmail').value;
+            const type = document.querySelector('input[name="accountType"]:checked').value;
+            const password = document.getElementById('signupPassword').value;
+            const studentId = type === 'student' ? document.getElementById('signupStudent').value : '';
+
+            const pendingUsers = JSON.parse(localStorage.getItem('pendingUsers'));
+            const users = JSON.parse(localStorage.getItem('users'));
+
+            if (users.find(u => u.email === email) || pendingUsers.find(u => u.email === email)) {
+                alert('이미 가입된 이메일입니다.');
+                return;
+            }
+
+            const newUser = {
+                id: Date.now(),
+                name,
+                email,
+                userId: email.split('@')[0],
+                password,
+                type,
+                studentId,
+                status: 'pending'
+            };
+
+            pendingUsers.push(newUser);
+            localStorage.setItem('pendingUsers', JSON.stringify(pendingUsers));
+            closeSignupModal();
+            alert('회원가입 신청이 완료되었습니다. 관리자 승인을 기다려주세요.');
+            document.querySelector('#signupModal form').reset();
+        };
+
+        // ========== 로그아웃 ==========
+        const logout = () => {
+            currentUser = null;
+            localStorage.removeItem('currentUser');
+            updateUI();
+            showHome();
+            alert('로그아웃되었습니다!');
+        };
+
+        // ========== 모달 함수 ==========
+        const openLoginModal = () => document.getElementById('loginModal').style.display = 'block';
+        const closeLoginModal = () => {
+            document.getElementById('loginModal').style.display = 'none';
+            document.querySelector('#loginModal form').reset();
+        };
+
+        const openSignupModal = () => document.getElementById('signupModal').style.display = 'block';
+        const closeSignupModal = () => {
+            document.getElementById('signupModal').style.display = 'none';
+            document.querySelector('#signupModal form').reset();
+        };
+
+        const openPostModal = (type) => {
+            if (!currentUser) {
+                alert('로그인 후 이용하세요.');
+                return;
+            }
+            document.getElementById('postModal').dataset.type = type;
+            document.getElementById('postModal').style.display = 'block';
+        };
+
+        const closePostModal = () => {
+            document.getElementById('postModal').style.display = 'none';
+            document.querySelector('#postModal form').reset();
+        };
+
+        const openCommentModal = (postId) => {
+            if (!currentUser) {
+                alert('로그인 후 이용하세요.');
+                return;
+            }
+            currentPostId = postId;
+            document.getElementById('commentModal').style.display = 'block';
+        };
+
+        const closeCommentModal = () => {
+            document.getElementById('commentModal').style.display = 'none';
+            document.querySelector('#commentModal form').reset();
+            currentPostId = null;
+        };
+
+        // ========== 공지사항 수정 ==========
+        const openEditNoticeModal = (e) => {
+            e.stopPropagation();
+            const notice = JSON.parse(localStorage.getItem('notice'));
+            document.getElementById('editNoticeTitle').value = notice.title;
+            document.getElementById('editNoticeContent').value = notice.content;
+            document.getElementById('editNoticeModal').style.display = 'block';
+        };
+
+        const closeEditNoticeModal = () => {
+            document.getElementById('editNoticeModal').style.display = 'none';
+        };
+
+        const handleEditNotice = (e) => {
+            e.preventDefault();
+            const notice = {
+                title: document.getElementById('editNoticeTitle').value,
+                content: document.getElementById('editNoticeContent').value
+            };
+            localStorage.setItem('notice', JSON.stringify(notice));
+            document.getElementById('noticePreview').textContent = notice.content;
+            closeEditNoticeModal();
+            alert('저장되었습니다!');
+        };
+
+        // ========== 건강 정보 수정 ==========
+        const openEditHealthModal = (e, type) => {
+            e.stopPropagation();
+            currentHealthType = type;
+            const healthInfo = JSON.parse(localStorage.getItem('healthInfo'));
+            const titles = { wash: '🧼 손 씻기', nutrition: '🥗 영양 관리', exercise: '🏃 운동과 휴식' };
+            document.getElementById('editHealthTitle').textContent = titles[type] + ' 수정';
+            document.getElementById('editHealthContent').value = healthInfo[type];
+            document.getElementById('editHealthModal').style.display = 'block';
+        };
+
+        const closeEditHealthModal = () => {
+            document.getElementById('editHealthModal').style.display = 'none';
+            currentHealthType = null;
+        };
+
+        const handleEditHealth = (e) => {
+            e.preventDefault();
+            const healthInfo = JSON.parse(localStorage.getItem('healthInfo'));
+            healthInfo[currentHealthType] = document.getElementById('editHealthContent').value;
+            localStorage.setItem('healthInfo', JSON.stringify(healthInfo));
+
+            const contentIds = { wash: 'washContent', nutrition: 'nutritionContent', exercise: 'exerciseContent' };
+            document.getElementById(contentIds[currentHealthType]).textContent = healthInfo[currentHealthType];
+
+            closeEditHealthModal();
+            alert('저장되었습니다!');
+        };
+
+        // ========== 질의응답 ==========
+        const handlePostSubmit = (e) => {
+            e.preventDefault();
+            const title = document.getElementById('postTitle').value;
+            const content = document.getElementById('postContent').value;
+
+            const qnaList = JSON.parse(localStorage.getItem('qnaList'));
+            qnaList.push({
+                id: Date.now(),
+                title,
+                content,
+                author: currentUser.name,
+                type: currentUser.type,
+                date: new Date().toLocaleDateString('ko-KR'),
+                comments: []
+            });
+
+            localStorage.setItem('qnaList', JSON.stringify(qnaList));
+            closePostModal();
+            loadQNA();
+            alert('질문이 등록되었습니다!');
+        };
+
+        const handleCommentSubmit = (e) => {
+            e.preventDefault();
+            const text = document.getElementById('commentText').value;
+            const qnaList = JSON.parse(localStorage.getItem('qnaList'));
+            const post = qnaList.find(p => p.id === currentPostId);
+
+            if (post) {
+                post.comments.push({
+                    id: Date.now(),
+                    author: currentUser.name,
+                    type: currentUser.type,
+                    text,
+                    date: new Date().toLocaleDateString('ko-KR')
+                });
+                localStorage.setItem('qnaList', JSON.stringify(qnaList));
+            }
+
+            closeCommentModal();
+            loadQNA();
+            alert('댓글이 등록되었습니다!');
+        };
+
+        const loadQNA = () => {
+            const qnaList = JSON.parse(localStorage.getItem('qnaList'));
+            let html = '';
+
+            if (qnaList.length === 0) {
+                html = '<p style="text-align: center; color: #999; padding: 40px;">아직 질문이 없습니다. 첫 번째 질문을 작성해보세요!</p>';
+            } else {
+                qnaList.reverse().forEach(post => {
+                    const typeBadge = {
+                        'admin': '👑',
+                        'student': '👤',
+                        'parent': '👨‍👩‍👧'
+                    }[post.type] || '';
+
+                    html += `
+                        <div class="post-item">
+                            <div class="post-title">${post.title}</div>
+                            <div class="post-author">${typeBadge} ${post.author} | ${post.date}</div>
+                            <div class="post-content">${post.content}</div>
+                            <button class="btn" style="background: #667eea; color: white; padding: 5px 10px; font-size: 0.9rem; margin-top: 10px;" onclick="openCommentModal(${post.id})">💬 댓글 달기</button>
+                            <div style="margin-top: 15px;">
+                                ${post.comments.map(comment => `
+                                    <div class="comment">
+                                        <div class="comment-author">${comment.author} (${comment.date})</div>
+                                        <div class="comment-text">${comment.text}</div>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        </div>
+                    `;
+                });
+            }
+
+            document.getElementById('qnaList').innerHTML = html;
+        };
+
+        // ========== 관리자 패널 ==========
+        const switchAdminTab = (tab) => {
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            if (tab === 'approval') {
+                document.getElementById('approvalTab').style.display = 'block';
+                document.getElementById('usersTab').style.display = 'none';
+                document.getElementById('contentTab').style.display = 'none';
+                loadPendingUsers();
+            } else if (tab === 'users') {
+                document.getElementById('approvalTab').style.display = 'none';
+                document.getElementById('usersTab').style.display = 'block';
+                document.getElementById('contentTab').style.display = 'none';
+                loadApprovedUsers();
+            } else {
+                document.getElementById('approvalTab').style.display = 'none';
+                document.getElementById('usersTab').style.display = 'none';
+                document.getElementById('contentTab').style.display = 'block';
+            }
+        };
+
+        const loadPendingUsers = () => {
+            const pendingUsers = JSON.parse(localStorage.getItem('pendingUsers'));
+            let html = '';
+
+            if (pendingUsers.length === 0) {
+                html = '<p style="text-align: center; color: #999; padding: 30px;">대기 중인 회원이 없습니다.</p>';
+            } else {
+                pendingUsers.forEach((user, index) => {
+                    const typeLabel = {
+                        'student': '👤 학생',
+                        'parent': '👨‍👩‍👧 학부모',
+                        'admin': '👑 관리자'
+                    }[user.type] || user.type;
+
+                    html += `
+                        <div class="approval-item">
+                            <div class="approval-info">
+                                <div class="approval-name">${user.name}</div>
+                                <div class="approval-email">${user.email}</div>
+                                <span class="approval-type">${typeLabel}</span>
+                            </div>
+                            <div class="approval-actions">
+                                <button class="btn-small btn-approve" onclick="approveUser(${index})">✓ 승인</button>
+                                <button class="btn-small btn-reject" onclick="rejectUser(${index})">✕ 거부</button>
+                            </div>
+                        </div>
+                    `;
+                });
+            }
+
+            document.getElementById('pendingList').innerHTML = html;
+        };
+
+        const loadApprovedUsers = () => {
+            const users = JSON.parse(localStorage.getItem('users'));
+            const adminUser = currentUser;
+            let html = '';
+
+            // 자신을 제외한 다른 사용자만 표시
+            const otherUsers = users.filter(u => u.id !== adminUser.id && u.status === 'approved');
+
+            if (otherUsers.length === 0) {
+                html = '<p style="text-align: center; color: #999; padding: 30px;">가입한 회원이 없습니다.</p>';
+            } else {
+                otherUsers.forEach((user, index) => {
+                    const typeLabel = {
+                        'student': '👤 학생',
+                        'parent': '👨‍👩‍👧 학부모',
+                        'admin': '👑 관리자'
+                    }[user.type] || user.type;
+
+                    const studentInfo = user.studentId ? `<div class="approval-email" style="margin-top: 5px;">📚 ${user.studentId}</div>` : '';
+
+                    html += `
+                        <div class="approval-item">
+                            <div class="approval-info">
+                                <div class="approval-name">${user.name}</div>
+                                <div class="approval-email">${user.email}</div>
+                                ${studentInfo}
+                                <span class="approval-type">${typeLabel}</span>
+                            </div>
+                            <div class="approval-actions">
+                                <button class="btn-small btn-reject" onclick="deleteUserByAdmin(${user.id})" style="background: #e74c3c;">🗑️ 삭제</button>
+                            </div>
+                        </div>
+                    `;
+                });
+            }
+
+            document.getElementById('usersList').innerHTML = html;
+        };
+
+        const approveUser = (index) => {
+            const pendingUsers = JSON.parse(localStorage.getItem('pendingUsers'));
+            const users = JSON.parse(localStorage.getItem('users'));
+            const user = pendingUsers[index];
+
+            user.status = 'approved';
+            users.push(user);
+
+            pendingUsers.splice(index, 1);
+            localStorage.setItem('pendingUsers', JSON.stringify(pendingUsers));
+            localStorage.setItem('users', JSON.stringify(users));
+
+            loadPendingUsers();
+            alert(`${user.name}님의 회원가입을 승인했습니다.`);
+        };
+
+        const rejectUser = (index) => {
+            const pendingUsers = JSON.parse(localStorage.getItem('pendingUsers'));
+            const user = pendingUsers[index];
+
+            pendingUsers.splice(index, 1);
+            localStorage.setItem('pendingUsers', JSON.stringify(pendingUsers));
+
+            loadPendingUsers();
+            alert(`${user.name}님의 회원가입을 거부했습니다.`);
+        };
+
+        const deleteUserByAdmin = (userId) => {
+            if (confirm('이 사용자를 삭제하시겠습니까?')) {
+                const users = JSON.parse(localStorage.getItem('users'));
+                const userIndex = users.findIndex(u => u.id === userId);
+                
+                if (userIndex > -1) {
+                    const deletedUser = users[userIndex];
+                    users.splice(userIndex, 1);
+                    localStorage.setItem('users', JSON.stringify(users));
+                    loadApprovedUsers();
+                    alert(`${deletedUser.name}님의 계정이 삭제되었습니다.`);
+                }
+            }
+        };
+
+        // ========== 회원탈퇴 ==========
+        const openDeleteAccountModal = () => {
+            document.getElementById('deleteAccountModal').style.display = 'block';
+        };
+
+        const closeDeleteAccountModal = () => {
+            document.getElementById('deleteAccountModal').style.display = 'none';
+        };
+
+        const confirmDeleteAccount = () => {
+            const users = JSON.parse(localStorage.getItem('users'));
+            const userIndex = users.findIndex(u => u.id === currentUser.id);
+
+            if (userIndex > -1) {
+                const userName = users[userIndex].name;
+                users.splice(userIndex, 1);
+                localStorage.setItem('users', JSON.stringify(users));
+                
+                currentUser = null;
+                localStorage.removeItem('currentUser');
+                closeDeleteAccountModal();
+                updateUI();
+                showHome();
+                alert(`${userName}님의 계정이 삭제되었습니다. 그동안 이용해주셔서 감사합니다!`);
+            }
+        };
+
+        // ========== 페이지 전환 ==========
+        const showHome = () => {
+            document.getElementById('mainContent').classList.remove('hidden');
+            document.getElementById('noticePage').classList.add('hidden');
+            document.getElementById('qnaPage').classList.add('hidden');
+            document.getElementById('adminPanel').classList.add('hidden');
+            loadHomeContent();
+        };
+
+        const showNotice = () => {
+            document.getElementById('mainContent').classList.add('hidden');
+            document.getElementById('noticePage').classList.remove('hidden');
+            document.getElementById('qnaPage').classList.add('hidden');
+            document.getElementById('adminPanel').classList.add('hidden');
+            loadNotice();
+        };
+
+        const loadNotice = () => {
+            const notice = JSON.parse(localStorage.getItem('notice'));
+            let html = `<div class="post-item">
+                <div class="post-title">${notice.title}</div>
+                <div class="post-author">📢 공지사항</div>
+                <div class="post-content">${notice.content}</div>
+            </div>`;
+            document.getElementById('noticeList').innerHTML = html;
+        };
+
+        const showQNA = () => {
+            document.getElementById('mainContent').classList.add('hidden');
+            document.getElementById('noticePage').classList.add('hidden');
+            document.getElementById('qnaPage').classList.remove('hidden');
+            document.getElementById('adminPanel').classList.add('hidden');
+            loadQNA();
+        };
+
+        const showAdminPanel = () => {
+            document.getElementById('mainContent').classList.add('hidden');
+            document.getElementById('noticePage').classList.add('hidden');
+            document.getElementById('qnaPage').classList.add('hidden');
+            document.getElementById('adminPanel').classList.remove('hidden');
+            loadPendingUsers();
+        };
+
+        const loadHomeContent = () => {
+            const notice = JSON.parse(localStorage.getItem('notice'));
+            const healthInfo = JSON.parse(localStorage.getItem('healthInfo'));
+            document.getElementById('noticePreview').textContent = notice.content;
+            document.getElementById('washContent').textContent = healthInfo.wash;
+            document.getElementById('nutritionContent').textContent = healthInfo.nutrition;
+            document.getElementById('exerciseContent').textContent = healthInfo.exercise;
+        };
+
+        // ========== Google 가입 관련 추가 함수 ==========
+        let tempGoogleData = null;
+
+        const handleGoogleSignupClick = () => {
+            // Google One Tap 프롬프트 표시
+            google.accounts.id.prompt((notification) => {
+                if (notification.isNotDisplayed() || notification.isSkippedMoment()) {
+                    console.log("Google One Tap not displayed, waiting for user interaction");
+                }
+            });
+        };
+
+        const submitGoogleSignup = () => {
+            const selectedType = document.querySelector('input[name="googleAccountType"]:checked').value;
+            const users = JSON.parse(localStorage.getItem('users'));
+
+            const newUser = {
+                id: Date.now(),
+                name: tempGoogleData.name,
+                email: tempGoogleData.email,
+                userId: tempGoogleData.email.split('@')[0],
+                password: 'GOOGLE_AUTH_USER',
+                type: selectedType,
+                status: 'approved'
+            };
+
+            users.push(newUser);
+            localStorage.setItem('users', JSON.stringify(users));
+            currentUser = newUser;
+            localStorage.setItem('currentUser', JSON.stringify(newUser));
+
+            document.getElementById('googleTypeModal').style.display = 'none';
+            closeSignupModal();
+            updateUI();
+            alert(`Google 계정(${tempGoogleData.name}님)으로 가입 및 로그인되었습니다!`);
+            tempGoogleData = null;
+        };
+
+        // ========== 모달 외부 클릭 ==========
+        window.onclick = (event) => {
+            if (event.target.classList.contains('modal')) {
+                event.target.style.display = 'none';
+            }
+        };
+
+        // ========== 초기화 ==========
+        window.onload = function () {
+            try {
+                // Google Login 초기 설정
+                // ⚠️ 중요: 아래 CLIENT_ID를 자신의 Google Cloud Console Client ID로 변경하세요!
+                // https://console.cloud.google.com → APIs 및 서비스 → 사용자 인증 정보 에서 확인
+                const CLIENT_ID = "YOUR_GOOGLE_CLIENT_ID_HERE";
+                
+                console.log("🚀 배포용 Google OAuth 활성화");
+                console.log("Client ID:", CLIENT_ID);
+                
+                // 배포 환경: 실제 Google OAuth 사용
+                google.accounts.id.initialize({
+                    client_id: CLIENT_ID,
+                    callback: handleCredentialResponse,
+                    auto_select: false
+                });
+
+                // 로그인 모달의 구글 버튼 렌더링
+                google.accounts.id.renderButton(
+                    document.getElementById("googleLoginBtn"),
+                    { 
+                        theme: "outline", 
+                        size: "large", 
+                        width: "100%",
+                        text: "signin_with"
+                    }
+                );
+
+                // 회원가입 페이지의 커스텀 Google 버튼
+                const googleSignupBtn = document.getElementById("googleSignupBtn");
+                if (googleSignupBtn) {
+                    const signupButton = googleSignupBtn.querySelector('button');
+                    if (signupButton) {
+                        signupButton.onclick = function(e) {
+                            e.preventDefault();
+                            handleGoogleSignupClick();
+                            return false;
+                        };
+                    }
+                }
+
+                console.log("✅ Google OAuth 초기화 완료");
+            } catch (error) {
+                console.error("❌ Google API initialization error:", error);
+                alert("Google OAuth 초기화 실패\n\n확인사항:\n1. Client ID가 올바른지 확인\n2. Google Cloud Console에서 도메인이 등록되었는지 확인\n3. 배포 도메인: https://yourdomain.com");
+            }
+        };
+
+        // ========== Google 로그인 핸들러 ==========
+        function handleCredentialResponse(response) {
+            try {
+                console.log("Google login successful!");
+                
+                // JWT 디코딩 (UTF-8 대응)
+                const base64Url = response.credential.split('.')[1];
+                const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+                const jsonPayload = decodeURIComponent(atob(base64).split('').map(function (c) {
+                    return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+                }).join(''));
+
+                const payload = JSON.parse(jsonPayload);
+                console.log("Google User Data:", payload);
+
+                const email = payload.email;
+                const name = payload.name;
+                const users = JSON.parse(localStorage.getItem('users'));
+
+                // 기존 사용자 확인
+                let user = users.find(u => u.email === email);
+
+                if (!user) {
+                    // 구글 계정으로 첫 로그인 시 계정 유형 선택 모달 표시
+                    console.log("New Google user - showing account type selection");
+                    tempGoogleData = { name, email };
+                    document.getElementById('googleTypeModal').style.display = 'block';
+                    return;
+                } else if (user.status === 'pending') {
+                    alert('❌ 회원가입이 아직 관리자 승인 대기 중입니다.\n관리자의 승인을 기다려주세요.');
+                    return;
+                } else if (user.status === 'approved') {
+                    console.log("Existing Google user - logging in");
+                    alert(`✅ ${name}님, Google 계정으로 로그인되었습니다!`);
+                    currentUser = user;
+                    localStorage.setItem('currentUser', JSON.stringify(user));
+                    closeLoginModal();
+                    closeSignupModal();
+                    updateUI();
+                    showHome();
+                }
+            } catch (error) {
+                console.error("Google login error:", error);
+                alert("❌ Google 로그인 중 오류가 발생했습니다.\n\n" + error.message);
+            }
+        }
+
+        updateUI();
+        loadHomeContent();
+    </script>
+</body>
+
+</html>
